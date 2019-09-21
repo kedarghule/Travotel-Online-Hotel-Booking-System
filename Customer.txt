@@ -1,0 +1,29 @@
+MySQL queries Implemented:
+
+
+ create table customer (username varchar(20) primary key, title varchar(10), fname varchar(30), lname varchar(30),gender varchar(6), add1 varchar(200), addd2 varchar(200), city varchar(50), state varchar(50), country varchar(50), zip varchar(6), contact varchar(10),email varchar(50), psw varchar(30)); 
+
+create table registered (username varchar(20) primary key, psw varchar(30));
+
+create table admin (username varchar(20), psw varchar(20));
+
+
+CREATE table hotel(hid int primary key, hname varchar(50), hloc varchar(50), hdesc varchar(500), haddr varchar(200), imgname varchar(100), path varchar(200), type varchar(100));
+
+
+CREATE table room_type(rtid int primary key AUTO_INCREMENT, hid int, rtname varchar(100), max_guests int, rtprice int, no_rooms int);
+
+
+create table reservation(res_id int PRIMARY key AUTO_INCREMENT, hid int, roomtype varchar(50), username varchar(20), no_rooms int, no_guests int, in_date date, out_date date, amount int, status varchar(20));
+
+
+DELIMITER $$
+
+CREATE PROCEDURE MonthEntry()
+BEGIN
+PREPARE stmt FROM
+"SELECT * FROM reservation";
+EXECUTE stmt;
+END
+
+DELIMITER ;
